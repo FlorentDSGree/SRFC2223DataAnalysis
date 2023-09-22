@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <div class="title1">Stade Rennais Football Club - 22/23 season results analysis</div>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <link href="http://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href= "index.css">
+</head>
+ 
+<body>
+	<div class="title2">1. Introduction</div>
+	<p>The purpose of this study is to analyse and visualise the 2022/2023 Ligue 1 season of Stade Rennais Football Club (SRFC). MOT data. The data used were extrected from this 
+	website (<a href="https://fbref.com/en/comps/13/2022-2023/schedule/2022-2023-Ligue-1-Scores-and-Fixtures">link</a>).
+	The raw datasets are cleaned, transformed and stored in a format that enables fast analysis. The aim of this work is too check the consistency of the results thoughout the 
+	season. The analysis and visualisation are done using Python and the library Plotly.</p>
+	
+    <div class="title2">2. Actual performance</div>
+	<p>SRFC finishes the 22/23 season at the 4th position. The team did not performs the same all season long and this is what will be analysed below. 
+	The figure below shows the distribution of league rank after each game played. The first few games the rank can change quickly due to the low number of games played. 
+	The 5th and 6th position are the most frequent position that occur, respectively, 10 and 12 times. According to this figure, finishing 4th is achieving a little 
+	over performance. 2 games before the term of the season SRFC was 6th and climbed to the 4th position within the last 2 games.</p>
+	<br>
+	<p align="center"><object type="text/html" data="https://florentdsgree.github.io/SRFC2223DataAnalysis/rankingOccurrence.html" height="550px" width="900px"></object></p>
+	<br>
+	<p>The graph below shows the difference of points betwwen SRFC and the team at the 4th position (final SRFC position). The aim is to highlight how far SRFC is its final 
+	position and identify the moment where the team was struggling. The biggest gap was 8 points towards the end of the season (after games 30, 31, 32, and 34). It shows 
+	that the last 4 games were very important to fill this big gap. Catching up 8 points within 4 games, where 12 points maximum could be taken, means SRFC won at least 3 out 
+	of 4 games and their direct opponents lost at least 3 out of 4 games. During the beginning of the season (roughly 19 games), SRFC performs very well and was aiming for the 
+	3rd or 4th position. However, the beginning of the second part of the season (from January), the team started to get bad results. It might be link to a combination of 2 factors: 
+	the long break due to the world cup and injury of a key player.</p>
+	<br>
+	<p align="center"><object type="text/html" data="https://florentdsgree.github.io/SRFC2223DataAnalysis/differencePointsFinalPosition.html" height="550px" width="900px"></object></p>
+	<br>
+	<p>The plot below displays the head-to-head performance. A score is given for each opponent teams. The score is calculated as follow: 3 points for a win, 0 point for a draw, 
+	and -3 points for a loss. The score is cumulated for both home and away games. In case of a win and a loss the overall goal difference is calculated to give either +0.5 or 
+	-0.5 to the final score. It reflects a slight advantage given to a team who scores the most goals overall. Against the bottom 7 teams, SRFC won 12 games and 2 draw. The performance 
+	against the teams finishing between 7th and 13th position is even. Winning few more games against these teams would have helped finishing the league at a higher position. It worth 
+	noting that SRFC beat the league champion, Paris S-G twice.</p>
+	<br>
+	<p align="center"><object type="text/html" data="https://florentdsgree.github.io/SRFC2223DataAnalysis/scorePerformance.html" height="550px" width="900px"></object></p>
+	<br>
+	
+	<div class="title2">3. Predicted and xG performance</div>
+	<p>After visualising the actual results, some prediction of final position have been made based on the previous games performance. The calculation methodology is as follow. 
+	Consider the last 6 games played to calculate the average number of points and average goal difference per games. Then calculate the final number of points and determine 
+	the final position considering the current number of points and last 6 games performance metrics to remain constant until the end of the season. 
+	The plot below show the occurence final ranking predicted using the prediction parameters calculated for each team. The distribution shows a final position between 5th and 
+	7th to be the more likely over the season. It was also predicted 5 times to be in the top 3.</p>
+
+	<br>
+	<p align="center"><object type="text/html" data="https://florentdsgree.github.io/SRFC2223DataAnalysis/rankingOccurrencePrediction.html" height="550px" width="900px"></object></p>
+	<br>
+	
+	<p>The expected goals (xG) is available from the data and will be used to calculate what could have been the ranking. The expecting goals is a value that gives the amount of 
+	goals ateam could have scored according the opportunities that occur during the game. The xG value are given as float value (e.g. 1.2). If the difference of xG is less than 0.5 
+	the game is defined as draw otherwise the team with the highest xg is the winner. 
+	The plot below is the distribution of the rank considering the xG. According to the xG, SRFC would have finished at the 5th position (14 occurrences).</p>
+	
+	<br>
+	<p align="center"><object type="text/html" data="https://florentdsgree.github.io/SRFC2223DataAnalysis/rankingOccurrencexG.html" height="550px" width="900px"></object></p>
+	<br>
+	
+	<p>Three diffferent ranking have been displayed: actual results, predicted results, and xG results. The three are plotted on the same graph to visualise the gaps and differences. 
+	The line "Predicted" starts only after 6 games as 6 games are required to make predictions. The xG rank is almost always above the actual rank meaning the team slightly under 
+	performs. The "Predicted" line is below from the beginning of the second half of the season and highlights the lower performance as described earlier.</p>
+	<br>
+	<p align="center"><object type="text/html" data="https://florentdsgree.github.io/SRFC2223DataAnalysis/rankingComparison.html" height="550px" width="900px"></object></p>
+	<br>
+	
+	<div class="title2">4. All teams xG performance</div>
+	<p>The xG based performance is showed below to highlights teams that under or over performed. On the left hand side is the actual final ranking and the righ hand side is the 
+	xG based final ranking. A grey line means no changes, a green line means over performance, and a red line means under performance. The thicker the line bigger the difference. 
+	8 teams under performed, 8 teams over performed, and 4 teams performed the same. According the xG, Lille would have been champion while the actually finished 5th. Lorient is 
+	the team that over performed the most finishing 10 which is 5 position above the xG.</p>
+	<br>
+	<p align="center"><object type="text/html" data="https://florentdsgree.github.io/SRFC2223DataAnalysis/actualVsxGFinalRanking.html" height="550px" width="900px"></object></p>
+	<br>
+	<p>The difference between actual and xG number of points is highlighted below. The left hand side is the actual final position. The marker color has same meaning as the graph 
+	above, it is hence expected to see most of the green marker on the left side (positive difference of points) and most of the red on the right side (negative difference of 
+	points). Lille got 11 points less than the xG calculation while Lorient got 18 more points than xG calculation. </p>
+	<br>
+	<p align="center"><object type="text/html" data="https://florentdsgree.github.io/SRFC2223DataAnalysis/actualVsxGFinalPoints.html" height="550px" width="900px"></object></p>
+	<br>
+	
+
+</body>
+
+
+</html>
